@@ -1,0 +1,98 @@
+<html>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+
+  <style>
+    #filtered_image {
+      position: relative;
+      width: 480px;
+      height: 270px;
+    }
+
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 270px;
+      width: 480px;
+      opacity: 0.2;
+      transition: 0.5s ease;
+      background-color: #008cba;
+    }
+
+    #overlay_image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      border-radius: 50%;
+    }
+  </style>
+
+  <body onload="init()">
+    <video
+      id="my-video"
+      controls="true"
+      width="480"
+      height="270"
+      crossorigin="anonymous"
+    >
+      <!--
+      <source
+        src="https://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v"
+        type="video/mp4"
+      />
+      -->
+      <source src="short-flowers.mov" type="video/mp4" />
+    </video>
+
+    <div id="filtered_image">
+      <canvas id="my-canvas" width="480" height="270"></canvas>
+      <div id="overlay">
+        <img
+          id="overlay_image"
+          src="https://as2.ftcdn.net/v2/jpg/01/18/58/69/1000_F_118586942_SVPWjtr89yA5eweod9f3wasbdkywBapU.jpg"
+          alt="Avatar"
+          class="overlay"
+          width="80"
+          height="80"
+        />
+      </div>
+    </div>
+
+    <br />
+
+    <input
+      type="radio"
+      id="bw"
+      name="filter_type"
+      value="BW"
+      onclick="handleFilterClick(this);"
+    />
+    <label for="bw">BW</label><br />
+
+    <input
+      type="radio"
+      id="uv"
+      name="filter_type"
+      value="UV"
+      onclick="handleFilterClick(this);"
+    />
+    <label for="uv">UV</label><br />
+
+    <input
+      type="radio"
+      id="red2blue"
+      name="filter_type"
+      value="RED2BLUE"
+      onclick="handleFilterClick(this);"
+    />
+    <label for="red2blue">Red2Blue</label>
+  </body>
+  <script src="processor.js"></script>
+</html>
