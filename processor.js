@@ -1,5 +1,5 @@
 const processor = {
-  filterType: "RED2BLUE",
+  filterType: "UV",
   timerCallback() {
     if (this.video.paused || this.video.ended) {
       return;
@@ -93,4 +93,6 @@ function handleFilterClick(filterOption) {
 
 function init() {
   processor.doLoad();
+  var vid = document.getElementById("my-video");
+  vid.play();
 }
